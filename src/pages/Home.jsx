@@ -1,5 +1,6 @@
 import { useState} from "react"
 import SearchField from "../components/SearchField"
+import MovieList from "../components/MovieList"
 
 const Home = () => {
     const [movies, setMovies] = useState([])
@@ -12,13 +13,7 @@ const Home = () => {
             {movies.length === 0 ? (
                 <p>Inga filmer att visa</p>
             ) : (
-                <ul>
-                    {movies.map((movie) => (
-                        <li key={movie.imdbID}>
-                            {movie.Title} ({movie.Year})
-                        </li>
-                    ))}
-                </ul>
+                <MovieList movies={movies} />
             )}
         </div>
     </div>
