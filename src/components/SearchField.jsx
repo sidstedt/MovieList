@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { searchMovies } from '../api/MovieApi'
 
-export default function SearchField({ onSearch}) {
+export default function SearchField({ onResults}) {
     const [title, setTitle] = useState('')
     const [year, setYear] = useState('')
 
