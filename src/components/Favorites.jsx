@@ -1,20 +1,32 @@
-import MovieCard from "./MovieCard"
+import { useState } from "react";
+import { useFavorites } from "../context/FavoriteContext";
+import MovieList from "./MovieList";
+import MovieOverlay from "./MovieOverlay";
+import MovieDetails from "./MovieDetails";
 
+const Favorites = ({ emptyFallback = <p>Du har inga favoriter</p> }) => {
+  const { favorites, isFavorite, toggleFavorite } = useFavorites();
+  const [selected, setSelected] = useState(null);
 
-const Favorites = ({ favorites, onRemove }) => {
-    if (!favorites || favorites.length === 0) {
-        return <p>Du har inga favoriter.</p>
-    }
   return (
-    <div>
-        <h2>Mina Favoriter</h2>
-        {favorites.map((movie) => (
-            <div key={movie.imdbID}>
-                <MovieCard movie={movie} />
-            </div>
-        ))}
-    </div>
-  )
-}
+    <>
+      <MovieList
+        movies={favorites}
+        onSelect={setSelected}
+        emptyFallback={emptyFallback}
+      />
+      {selected && (
+        <MovieOverlay
+          movie={selected}
+          onClose={() => setSelected(null)}
+          isFavorite={isFavorite}
+          toggleFavorite={toggleFavorite}
+        >
+          <MovieDetails imdbID={selected.imdbID} />
+        </MovieOverlay>
+      )}
+    </>
+  );
+};
 
-export default Favorites
+export default Favorites;
