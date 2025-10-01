@@ -13,22 +13,21 @@ export default function SearchField({ onResults}) {
     }
 
     return (
-        <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 8, margin: '16px 0' }}>
-        <input type="text" 
-            value={title} 
-            onChange={e => setTitle(e.target.value)} 
-            placeholder="Sök titel..." 
-            aria-label="title" 
-        />
-        <input 
-            type="text" 
-            value={year} 
-            onChange={e => setYear(e.target.value)} 
-            placeholder="År (valfritt)" 
-            aria-label="year" 
-            style={{ width: 120 }}
-        />
-        <button type="submit">Sök</button>
+        <form onSubmit={handleSubmit} className="search-form">
+            <input type="text" 
+                value={title} 
+                onChange={e => setTitle(e.target.value)} 
+                placeholder="Sök titel..." 
+                aria-label="title" 
+            />
+            <input 
+                type="text" 
+                value={year} 
+                onChange={e => setYear(e.target.value)} 
+                placeholder="År (valfritt)" 
+                aria-label="year" 
+            />
+            <button type="submit">Sök</button>
         </form>
     )
 }

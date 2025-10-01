@@ -1,27 +1,31 @@
 import NoImage from "../assets/NoImage.png";
 import { useFavorites } from "../context/FavoriteContext";
 
-const MovieCard = ({ movie, onExpand, isExpanded, children }) => {
+const MovieCard = ({ movie, onSelect }) => {
   const { toggleFavorite, isFavorite } = useFavorites();
+  const posterSrc = movie.Poster !== "N/A" ? movie.Poster : NoImage;
+  const fav = isFavorite(movie.imdbID);
+
   return (
-    <div>
-      <img
-        src={movie.Poster !== "N/A" ? movie.Poster : NoImage}
-        alt={movie.Title}
-      />
+    <div className="movie-card">
+      <img src={posterSrc} alt={movie.Title} className="movie-poster" />
       <h3>{movie.Title}</h3>
       <p>{movie.Year}</p>
       <button
-        onClick={e => {
-          toggleFavorite(movie);
-        }}
+        type="button"
+        className="favorite-btn"
+        aria-pressed={fav}
+        onClick={() => toggleFavorite(movie)}
       >
-        {isFavorite(movie.imdbID) ? "★ Favorit" : "☆ Lägg till favorit"}
+        {fav ? "★ Favorit" : "☆ Lägg till favorit"}
       </button>
-      <button onClick={onExpand}>
-        {isExpanded ? "Dölj info" : "Visa mer"}
+      <button
+        type="button"
+        className="expand-btn"
+        onClick={onSelect}
+      >
+        Mer info
       </button>
-      {isExpanded && children}
     </div>
   );
 };

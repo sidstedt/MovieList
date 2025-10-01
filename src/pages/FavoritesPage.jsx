@@ -1,15 +1,12 @@
-import Favorites from "../components/Favorites"
-import { useFavorites } from "../context/FavoriteContext"
+import Favorites from "../components/Favorites";
 
 const FavoritesPage = () => {
-    const { favorites, toggleFavorite } = useFavorites()
-
   return (
     <div>
-        <h1>Mina Favoriter</h1>
-        <Favorites favorites={favorites} onRemove={toggleFavorite} />
+      <h1>Mina Favoriter</h1>
+      <Favorites />
     </div>
-  )
-}
+  );
+};
 
-export default FavoritesPage
+export default FavoritesPage;
