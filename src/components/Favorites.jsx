@@ -11,7 +11,6 @@ const Favorites = ({ favorites, onRemove }) => {
         {favorites.map((movie) => (
             <div key={movie.imdbID}>
                 <MovieCard movie={movie} />
-                <button onClick={() => onRemove(movie.imdbID)}>Ta bort</button>
             </div>
         ))}
     </div>
