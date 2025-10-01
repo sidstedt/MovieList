@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 
+
 const Header = () => {
     return (
-        <header>
+        <header className="header">
             <nav>
                 <Link to="/">Hem</Link>
                 <Link to="/favorites">Favoriter</Link>
