@@ -7,9 +7,10 @@ const Header = () => {
             <nav>
                 <Link to="/">Hem</Link>
                 <Link to="/favorites">Favoriter</Link>
+                <Link to="/tutorial">Tutorial</Link>
             </nav>
         </header>
-    )
-}
+    );
+};
 
 export default Header
